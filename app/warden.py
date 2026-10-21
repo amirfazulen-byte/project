@@ -76,6 +76,15 @@ def resource_form(resource_id=None):
     data = dict(resource) if resource else DEFAULTS
     if request.method == "POST":
         data, error = read_resource_form()
+        # Смена сетки сдвинула бы слоты и позволила бы брони, пересекающиеся с уже сделанными.
+        grid_changed = resource and (
+            data["slot_minutes"] != resource["slot_minutes"] or data["open_time"] != resource["open_time"]
+        )
+        if not error and grid_changed and get_db().execute(
+            "SELECT 1 FROM bookings WHERE resource_id = ? AND start_at >= ?",
+            (resource["id"], slots.now().date().isoformat()),
+        ).fetchone():
+            error = "Длительность слота и время открытия нельзя менять, пока есть брони с сегодняшнего дня. Сначала отмените их."
         if error:
             flash(error)
         else:
