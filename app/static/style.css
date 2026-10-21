@@ -1,0 +1,16 @@
+:root { --accent: #1f7a4d; --bg: #f6f7f5; --text: #1d1f1e; --muted: #6b716e; --line: #dde1de; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.5 system-ui, sans-serif; background: var(--bg); color: var(--text); }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; background: #fff; border-bottom: 1px solid var(--line); }
+.top nav { display: flex; gap: 14px; align-items: center; }
+.logo { font-weight: 700; color: var(--accent); text-decoration: none; }
+main { max-width: 640px; margin: 0 auto; padding: 16px; }
+a { color: var(--accent); }
+h1 { font-size: 1.5rem; margin: 8px 0 16px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+label { display: block; margin-bottom: 12px; font-size: .9rem; color: var(--muted); }
+input, select { display: block; width: 100%; margin-top: 4px; padding: 12px; font-size: 1rem; border: 1px solid var(--line); border-radius: 8px; color: var(--text); }
+.btn { display: inline-block; padding: 12px 20px; font-size: 1rem; border: 0; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; cursor: pointer; }
+.flash { padding: 10px 14px; border-radius: 8px; background: #fff4d6; }
+.inline { display: inline; margin: 0; }
+.link { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }

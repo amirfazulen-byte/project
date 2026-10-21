@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Свободно?</h1>
+<p>Бронирование стиралок, комнат и спортзала в интернате — с телефона, за несколько секунд.</p>
+<p><a class="btn" href="{{ url_for('auth.login') }}">Войти</a> <a href="{{ url_for('auth.register') }}">Регистрация</a></p>
+{% endblock %}

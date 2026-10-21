@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<h1>Вход для жильцов</h1>
+<form method="post" class="card">
+  {% include "auth/_student_fields.html" %}
+  <button class="btn">Войти</button>
+</form>
+<p>Нет аккаунта? <a href="{{ url_for('auth.register') }}">Регистрация</a></p>
+<p><a href="{{ url_for('auth.staff_login') }}">Вход для воспитателей</a></p>
+{% endblock %}

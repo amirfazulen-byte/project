@@ -1,0 +1,5 @@
+<input type="hidden" name="csrf" value="{{ csrf }}">
+<label>Код интерната <input name="code" value="{{ request.form.code }}" required autocapitalize="characters"></label>
+<label>Имя <input name="name" value="{{ request.form.name }}" required></label>
+<label>Комната <input name="room" value="{{ request.form.room }}" required inputmode="numeric"></label>
+<label>Пароль <input name="password" type="password" required></label>
