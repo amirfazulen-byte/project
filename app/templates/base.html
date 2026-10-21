@@ -15,7 +15,8 @@
         <a href="{{ url_for('student.schedule') }}">Расписание</a>
         <a href="{{ url_for('student.my') }}">Мои брони</a>
       {% elif g.user.role == 'warden' %}
-        <a href="{{ url_for('warden.panel') }}">Панель</a>
+        <a href="{{ url_for('warden.panel') }}">Ресурсы</a>
+        <a href="{{ url_for('warden.bookings') }}">Брони</a>
       {% else %}
         <a href="{{ url_for('owner.panel') }}">Панель</a>
       {% endif %}

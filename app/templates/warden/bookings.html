@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Брони на день{% endblock %}
+{% block content %}
+<h1>Брони: {{ day|day_label }}</h1>
+<form method="get" class="day-pick">
+  <input type="date" name="d" value="{{ day.isoformat() }}">
+  <button class="btn">Показать</button>
+</form>
+{% for b in bookings %}
+<div class="row">
+  <div><b>{{ b.start_at[11:] }}</b> · {{ b.resource }}<br><small>{{ b.name }}, комната {{ b.room }}</small></div>
+  <form method="post" action="{{ url_for('warden.cancel', booking_id=b.id) }}"
+        onsubmit="return confirm('Отменить эту бронь?')">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <input type="hidden" name="d" value="{{ day.isoformat() }}">
+    <button class="link">Отменить</button>
+  </form>
+</div>
+{% else %}
+<p>В этот день броней нет.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Панель воспитателя{% endblock %}
+{% block content %}
+<h1>{{ school.name }}</h1>
+<div class="card">
+  Код для регистрации жильцов: <b class="code">{{ school.code }}</b>
+  <form method="post" action="{{ url_for('warden.change_code') }}"
+        onsubmit="return confirm('Сменить код? Жильцы будут входить и регистрироваться с новым кодом.')">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <button class="link">Сменить код</button>
+  </form>
+</div>
+
+<h2>Ресурсы</h2>
+<p><a class="btn" href="{{ url_for('warden.resource_form') }}">Добавить ресурс</a></p>
+{% for r in resources %}
+<div class="row">
+  <div>
+    <b>{{ r.name }}</b>{% if r.is_broken %} <span class="tag">на ремонте</span>{% endif %}<br>
+    <small>{{ r.slot_minutes }} мин, {{ r.open_time }}–{{ r.close_time }}, до {{ r.weekly_limit }} в неделю</small>
+  </div>
+  <div class="actions">
+    <a href="{{ url_for('warden.resource_form', resource_id=r.id) }}">Изменить</a>
+    <form method="post" action="{{ url_for('warden.toggle_repair', resource_id=r.id) }}">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <button class="link">{{ 'Починили' if r.is_broken else 'На ремонт' }}</button>
+    </form>
+  </div>
+</div>
+{% else %}
+<p>Ресурсов пока нет.</p>
+{% endfor %}
+{% endblock %}

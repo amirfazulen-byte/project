@@ -90,7 +90,27 @@ def add_resource_command(code, name, minutes, open_time, close_time, limit):
     click.echo(f"Ресурс «{name}» добавлен.")
 
 
+@click.command("create-warden")
+@click.argument("code")
+@click.argument("login")
+@click.argument("name")
+@click.password_option(prompt="Пароль")
+def create_warden_command(code, login, name, password):
+    """Создать воспитателя (для проверки до появления панели владельца)."""
+    db = get_db()
+    school = db.execute("SELECT id FROM schools WHERE code = ?", (code.upper(),)).fetchone()
+    if not school:
+        raise click.ClickException("Нет интерната с таким кодом.")
+    db.execute(
+        "INSERT INTO users (school_id, role, name, login, password_hash) VALUES (?, 'warden', ?, ?, ?)",
+        (school["id"], name, login, generate_password_hash(password)),
+    )
+    db.commit()
+    click.echo(f"Воспитатель {login} создан.")
+
+
 def init_app(app):
     app.teardown_appcontext(close_db)
-    for command in (init_db_command, create_owner_command, create_school_command, add_resource_command):
+    for command in (init_db_command, create_owner_command, create_school_command, add_resource_command,
+                    create_warden_command):
         app.cli.add_command(command)

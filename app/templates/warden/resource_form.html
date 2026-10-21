@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ resource.name if resource else 'Новый ресурс' }}{% endblock %}
+{% block content %}
+<h1>{{ resource.name if resource else 'Новый ресурс' }}</h1>
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label>Название <input name="name" value="{{ data.name }}" required placeholder="Стиралка 1"></label>
+  <label>Длительность слота, минут <input name="slot_minutes" type="number" min="5" max="720" value="{{ data.slot_minutes }}" required></label>
+  <label>Открытие <input name="open_time" type="time" value="{{ data.open_time }}" required></label>
+  <label>Закрытие <input name="close_time" type="time" value="{{ data.close_time }}" required></label>
+  <label>Броней в неделю на человека <input name="weekly_limit" type="number" min="1" max="50" value="{{ data.weekly_limit }}" required></label>
+  <button class="btn">Сохранить</button>
+  <a href="{{ url_for('warden.panel') }}">Отмена</a>
+</form>
+{% endblock %}
