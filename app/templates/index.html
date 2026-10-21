@@ -1,6 +1,38 @@
 {% extends "base.html" %}
+{% block title %}Бронирование в интернате{% endblock %}
 {% block content %}
-<h1>Свободно?</h1>
-<p>Бронирование стиралок, комнат и спортзала в интернате — с телефона, за несколько секунд.</p>
-<p><a class="btn" href="{{ url_for('auth.login') }}">Войти</a> <a href="{{ url_for('auth.register') }}">Регистрация</a></p>
+<section class="hero">
+  <h1>Свободно?</h1>
+  <p class="lead">Запись в стиралку, комнату для самоподготовки и спортзал интерната — с телефона за несколько секунд.</p>
+  <p>
+    <a class="btn" href="{{ url_for('auth.login') }}">Войти</a>
+    <a class="btn ghost" href="{{ url_for('auth.register') }}">Регистрация</a>
+  </p>
+  <p><a href="#connect">Подключить свой интернат</a></p>
+</section>
+
+<h2>Как это работает</h2>
+<ol class="steps">
+  <li>Воспитатель добавляет ресурсы и часы работы и сообщает жильцам код интерната.</li>
+  <li>Жилец регистрируется по коду, открывает расписание и видит свободное время.</li>
+  <li>Одно нажатие — и время за ним. Занять тот же слот второй раз нельзя.</li>
+</ol>
+
+<h2>Чем полезно интернату</h2>
+<ul class="benefits">
+  <li><b>Без споров.</b> Очередь видна всем вместо чатов и бумажек.</li>
+  <li><b>Честно.</b> Воспитатель задаёт лимит броней в неделю на каждого жильца.</li>
+  <li><b>Под контролем.</b> Воспитатель видит все брони на день, отменяет любую и отправляет технику «на ремонт».</li>
+  <li><b>Минимум данных.</b> О жильцах храним только имя и номер комнаты.</li>
+  <li><b>Ничего не нужно устанавливать.</b> Работает в браузере телефона.</li>
+</ul>
+
+<h2 id="connect">Подключить интернат</h2>
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label>Название интерната <input name="school_name" value="{{ request.form.school_name }}" required maxlength="200"></label>
+  <label>Ваше имя <input name="contact_name" value="{{ request.form.contact_name }}" required maxlength="200"></label>
+  <label>Телефон или e-mail <input name="contact" value="{{ request.form.contact }}" required maxlength="200"></label>
+  <button class="btn">Отправить заявку</button>
+</form>
 {% endblock %}

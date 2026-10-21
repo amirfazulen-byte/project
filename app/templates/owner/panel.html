@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Панель владельца{% endblock %}
+{% block content %}
+<h1>Панель владельца</h1>
+
+<h2>Интернаты</h2>
+<form method="post" action="{{ url_for('owner.add_school') }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label>Название <input name="name" required maxlength="200"></label>
+  <button class="btn">Создать интернат</button>
+</form>
+{% for s in schools %}
+<div class="row">
+  <div><b>{{ s.name }}</b><br><small>жильцов: {{ s.students }}</small></div>
+  <b class="code">{{ s.code }}</b>
+</div>
+{% else %}
+<p>Интернатов пока нет.</p>
+{% endfor %}
+
+<h2>Воспитатели</h2>
+{% if schools %}
+<form method="post" action="{{ url_for('owner.add_warden') }}" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label>Интернат
+    <select name="school" required>
+      {% for s in schools %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+    </select>
+  </label>
+  <label>Имя <input name="name" required maxlength="200"></label>
+  <label>Логин <input name="login" required maxlength="50" autocapitalize="none"></label>
+  <label>Пароль (от 6 символов) <input name="password" required minlength="6" autocomplete="off"></label>
+  <button class="btn">Создать воспитателя</button>
+</form>
+{% endif %}
+{% for w in wardens %}
+<div class="row"><div><b>{{ w.name }}</b><br><small>{{ w.school }} · логин {{ w.login }}</small></div></div>
+{% else %}
+<p>Воспитателей пока нет.</p>
+{% endfor %}
+
+<h2>Заявки с главной</h2>
+{% for r in reqs %}
+<div class="row">
+  <div><b>{{ r.school_name }}</b><br><small>{{ r.contact_name }} · {{ r.contact }} · {{ r.created_at[:16]|slot_label }}</small></div>
+</div>
+{% else %}
+<p>Заявок пока нет.</p>
+{% endfor %}
+{% endblock %}

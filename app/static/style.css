@@ -33,4 +33,10 @@ small { color: var(--muted); }
 .code { font-size: 1.3rem; letter-spacing: 2px; }
 .day-pick { display: flex; gap: 8px; margin-bottom: 8px; }
 .day-pick input { margin: 0; }
+.hero { padding: 16px 0 8px; }
+.hero h1 { font-size: 2rem; color: var(--accent); margin: 0 0 8px; }
+.lead { font-size: 1.15rem; }
+.btn.ghost { background: #fff; color: var(--accent); border: 1px solid var(--accent); }
+.steps, .benefits { padding-left: 20px; }
+.steps li, .benefits li { margin-bottom: 8px; }
 .link { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
