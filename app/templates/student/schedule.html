@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Расписание{% endblock %}
+{% block content %}
+{% if not resource %}
+<p>В интернате пока нет ресурсов. Попросите воспитателя их добавить.</p>
+{% else %}
+<nav class="chips">
+  {% for r in resources %}
+  <a class="chip{% if r.id == resource.id %} on{% endif %}" href="{{ url_for('student.schedule', r=r.id, d=day.isoformat()) }}">{{ r.name }}</a>
+  {% endfor %}
+</nav>
+<nav class="chips">
+  {% for d in days %}
+  <a class="chip{% if d == day %} on{% endif %}" href="{{ url_for('student.schedule', r=resource.id, d=d.isoformat()) }}">{{ d|day_label }}</a>
+  {% endfor %}
+</nav>
+{% if resource.is_broken %}<p class="flash">«{{ resource.name }}» на ремонте, бронировать нельзя.</p>{% endif %}
+<div class="slots">
+  {% for start, key, state in day_slots %}
+    {% if state == 'free' %}
+    <form method="post" action="{{ url_for('student.book') }}">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <input type="hidden" name="resource" value="{{ resource.id }}">
+      <input type="hidden" name="start" value="{{ key }}">
+      <button class="slot free">{{ start.strftime('%H:%M') }}<small>свободно</small></button>
+    </form>
+    {% else %}
+    <div class="slot {{ state }}">{{ start.strftime('%H:%M') }}<small>{{ {'busy': 'занято', 'mine': 'моё', 'off': 'недоступно'}[state] }}</small></div>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

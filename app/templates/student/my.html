@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Мои брони{% endblock %}
+{% block content %}
+<h1>Мои брони</h1>
+{% for b in bookings %}
+<div class="row">
+  <div><b>{{ b.name }}</b><br>{{ b.start_at|slot_label }}</div>
+  {% if b.start_at > now_key %}
+  <form method="post" action="{{ url_for('student.cancel', booking_id=b.id) }}">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <button class="link">Отменить</button>
+  </form>
+  {% endif %}
+</div>
+{% else %}
+<p>Броней нет. <a href="{{ url_for('student.schedule') }}">Открыть расписание</a></p>
+{% endfor %}
+{% endblock %}

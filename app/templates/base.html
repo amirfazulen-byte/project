@@ -13,6 +13,7 @@
     {% if g.user %}
       {% if g.user.role == 'student' %}
         <a href="{{ url_for('student.schedule') }}">Расписание</a>
+        <a href="{{ url_for('student.my') }}">Мои брони</a>
       {% elif g.user.role == 'warden' %}
         <a href="{{ url_for('warden.panel') }}">Панель</a>
       {% else %}

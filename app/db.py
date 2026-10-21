@@ -68,7 +68,29 @@ def create_school_command(name):
     click.echo(f"Интернат «{name}» создан, код: {code}")
 
 
+@click.command("add-resource")
+@click.argument("code")
+@click.argument("name")
+@click.option("--minutes", default=60, help="Длительность слота")
+@click.option("--open", "open_time", default="07:00")
+@click.option("--close", "close_time", default="22:00")
+@click.option("--limit", default=3, help="Броней в неделю на человека")
+def add_resource_command(code, name, minutes, open_time, close_time, limit):
+    """Добавить ресурс интернату (для проверки до появления панели воспитателя)."""
+    db = get_db()
+    school = db.execute("SELECT id FROM schools WHERE code = ?", (code.upper(),)).fetchone()
+    if not school:
+        raise click.ClickException("Нет интерната с таким кодом.")
+    db.execute(
+        "INSERT INTO resources (school_id, name, slot_minutes, open_time, close_time, weekly_limit)"
+        " VALUES (?, ?, ?, ?, ?, ?)",
+        (school["id"], name, minutes, open_time, close_time, limit),
+    )
+    db.commit()
+    click.echo(f"Ресурс «{name}» добавлен.")
+
+
 def init_app(app):
     app.teardown_appcontext(close_db)
-    for command in (init_db_command, create_owner_command, create_school_command):
+    for command in (init_db_command, create_owner_command, create_school_command, add_resource_command):
         app.cli.add_command(command)
