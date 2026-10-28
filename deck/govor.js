@@ -184,10 +184,11 @@ pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "DARK", sectionTitle: "Итог" });
 title(s, "Что дальше", true);
 const nW = (W - 2 * M - 2 * 0.35) / 3;
+// Карточки с запасом по высоте: в PowerPoint шрифт шире и текст вылезал за края
 const nexts = [
-  ["Запись голоса", "проговорить ответ вслух, а не только записать тезисы"],
-  ["Темы по предметам", "биология, история, литература — под реальные уроки"],
-  ["Класс целиком", "учитель открывает тренажёр для всего класса"],
+  ["Запись голоса", "проговорить ответ вслух"],
+  ["Темы по предметам", "биология, история, литература"],
+  ["Класс целиком", "учитель открывает всему классу"],
 ];
 nexts.forEach((n, i) => {
   s.addText([
@@ -195,18 +196,19 @@ nexts.forEach((n, i) => {
     { text: " ", options: { fontSize: 6, breakLine: true } },
     { text: n[1], options: { fontSize: 13, color: "C5DADD" } },
   ], { shape: pres.ShapeType.roundRect, rectRadius: 0.1, fill: { color: "0C6070" },
-    x: M + i * (nW + 0.35), y: 2.4, w: nW, h: 1.7,
-    align: "left", valign: "middle", margin: [12, 16, 12, 16], objectName: "план " + (i + 1) });
+    x: M + i * (nW + 0.35), y: 2.3, w: nW, h: 1.3,
+    align: "left", valign: "top", margin: [12, 14, 12, 14], objectName: "план " + (i + 1) });
 });
-s.addText("Начать можно с одного класса: тренажёр ничего не стоит и не требует разрешений — достаточно открыть ссылку",
-  { x: M, y: 4.4, w: W - 2 * M, h: 0.8, isTextBox: true, margin: 0, fontSize: 15,
+s.addText("Начать можно с одного класса: тренажёр ничего не стоит и не требует разрешений",
+  { x: M, y: 3.95, w: W - 2 * M, h: 0.5, isTextBox: true, margin: 0, fontSize: 15,
     color: "C5DADD", italic: true, valign: "top" });
 s.addText([
   { text: "govor.tatnet.app", options: { fontSize: 22, bold: true, color: THEME.colors.accent4, breakLine: true } },
   { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: "8FAEB3", breakLine: true } },
   { text: " ", options: { fontSize: 8, breakLine: true } },
-  { text: "Батыршин Ильназ · Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "6E8E94" } },
-], { x: M, y: 5.35, w: 10.0, h: 1.6, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
+  { text: "Батыршин Ильназ", options: { fontSize: 13, color: "6E8E94", breakLine: true } },
+  { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "6E8E94" } },
+], { x: M, y: 4.75, w: 10.0, h: 2.2, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
 s.addNotes("Закончить на планах и поблагодарить.");
 
 (async () => {
