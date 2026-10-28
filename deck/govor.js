@@ -152,46 +152,34 @@ s.addText([
   x: M, y: 4.5, w: W - 2 * M, h: 1.5, align: "left", valign: "top", margin: [16, 20, 16, 20],
   objectName: "принцип" });
 s.addNotes("Подчеркнуть: это не советы «не волнуйся», а конкретные действия, которые можно сделать прямо сейчас у доски.");
-
-/* ---------- 4. Демонстрация ---------- */
-s = pres.addSlide({ masterName: "DARK", sectionTitle: "Решение" });
-title(s, "Попробуем прямо сейчас", true);
-s.addText("Откройте сайт на телефоне, выберите тему и запишите ответ за минуту — это весь путь ученика",
-  { x: M, y: 2.45, w: 9.5, h: 0.9, isTextBox: true, margin: 0, fontSize: 20, color: "C5DADD", valign: "top" });
-s.addText("govor.tatnet.app", { shape: pres.ShapeType.roundRect, rectRadius: 0.12,
-  fill: { color: THEME.colors.accent4 }, x: M, y: 3.75, w: 5.6, h: 1.0,
-  fontSize: 24, bold: true, color: "04414F", align: "center", valign: "middle",
-  objectName: "адрес сайта" });
-s.addText("Работает в браузере телефона. Ничего не нужно устанавливать, регистрация нужна только для рейтинга.",
-  { x: M, y: 5.0, w: 9.5, h: 0.5, isTextBox: true, margin: 0, fontSize: 14, color: "8FAEB3", valign: "top" });
-s.addNotes("Сайт открыть ЗАРАНЕЕ и не закрывать вкладку. Держать скриншоты на случай сбоя сети. Предложить жюри самим выбрать тему на колесе — так убедительнее.");
-
-/* ---------- 5. Чем отличается ---------- */
+/* ---------- 4. Чем отличается ---------- */
 pres.addSection({ title: "Рынок" });
 s = pres.addSlide({ masterName: "TINT", sectionTitle: "Рынок" });
 title(s, "Чем отличается от курсов");
 const rows = [
   [{ text: "Что есть сейчас", options: { bold: true } }, { text: "Сколько стоит", options: { bold: true } },
    { text: "Сколько занимает", options: { bold: true } }, { text: "Есть оценка", options: { bold: true } }],
-  ["Курс ораторского искусства", "от 29 990 ₽", "недели", "да, от преподавателя"],
-  ["Репетитор по риторике", "платно, за занятие", "месяцы", "да"],
-  ["Школьный психолог", "бесплатно", "по записи", "нет, но надо прийти"],
-  ["Советы в интернете", "бесплатно", "минуты", "нет, но это просто текст"],
+  ["Курс ораторского искусства", "от 29 990 ₽", "недели", "да"],
+  ["Репетитор по риторике", "платно", "месяцы", "да"],
+  ["Школьный психолог", "бесплатно", "по записи", "нет"],
+  ["Советы в интернете", "бесплатно", "минуты", "нет"],
   [{ text: "«Спокойно у доски»", options: { bold: true, color: THEME.colors.accent1 } },
    { text: "бесплатно", options: { bold: true } },
    { text: "1 минута", options: { bold: true } },
-   { text: "нет, в этом суть", options: { bold: true } }],
+   { text: "нет", options: { bold: true } }],
 ];
-s.addTable(rows, { x: M, y: 1.75, w: W - 2 * M, colW: [4.0, 2.9, 2.5, 2.5],
+// Вывод ставим НАД таблицей: в PowerPoint строки таблицы растут под текст
+// и наползли бы на подпись снизу
+s.addText("Курсы учат выступать вообще. Здесь решается одна конкретная ситуация — ответ у доски, и тренировка занимает минуту, а не недели.",
+  { x: M, y: 1.5, w: W - 2 * M, h: 0.7, isTextBox: true, margin: 0, fontSize: 15,
+    bold: true, color: THEME.colors.dk2, valign: "top" });
+s.addTable(rows, { x: M, y: 2.35, w: W - 2 * M, colW: [4.4, 2.7, 2.6, 2.2],
   fontSize: 13, color: "16262B", fontFace: "Calibri",
   border: { type: "solid", color: THEME.colors.accent6, pt: 1 }, align: "left", valign: "middle",
   rowH: 0.45, fill: { color: "FFFFFF" }, objectName: "сравнение" });
-s.addText("Курсы учат выступать вообще. Здесь решается одна конкретная ситуация — ответ у доски, и тренировка занимает минуту, а не недели.",
-  { x: M, y: 4.9, w: W - 2 * M, h: 0.7, isTextBox: true, margin: 0, fontSize: 15,
-    bold: true, color: THEME.colors.dk2, valign: "top" });
 s.addNotes("Цена 29 990 ₽ — реальный онлайн-курс ораторского искусства, найден в открытом доступе. Главная мысль слайда: мы решаем узкую задачу быстро, а не учим ораторскому мастерству вообще.");
 
-/* ---------- 6. Планы ---------- */
+/* ---------- 5. Планы ---------- */
 pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "DARK", sectionTitle: "Итог" });
 title(s, "Что дальше", true);
