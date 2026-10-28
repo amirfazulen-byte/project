@@ -142,39 +142,7 @@ s.addText([
   fontSize: 15, color: C.text1, paraSpaceAfter: 6 });
 s.addNotes("Главное: штраф несопоставим с ценой товара, а конфискация партии обычно дороже самого штрафа. Источник — статья 14.43 КоАП, число продавцов — Data Insight, 2025.");
 
-/* ---------- 3. Мой аудит ---------- */
-pres.addSection({ title: "Исследование" });
-s = pres.addSlide({ masterName: "CONTENT_TINT", sectionTitle: "Исследование" });
-s.addText("Я проверил 30 карточек сам", { placeholder: "title" });
-s.addText("Статистики по нарушениям текста этикеток в открытом доступе нет: Роспотребнадзор публикует данные только по кодам маркировки. Эту цифру я получил сам.",
-  { x: M, y: 1.45, w: W - 2 * M, h: 0.6, isTextBox: true, margin: 0, fontSize: 15, color: THEME.colors.accent3, italic: true });
-s.addChart(pres.ChartType.bar, [{
-  name: "Карточек из 30",
-  labels: ["Всё в порядке", "Нет состава сырья", "Нет юр. адреса", "Нет номера партии", "Нет фото этикетки"],
-  values: [4, 6, 9, 14, 11],
-}], {
-  x: M, y: 2.2, w: 7.2, h: 3.6, barDir: "bar",
-  chartColors: [THEME.colors.accent1], showLegend: false,
-  showValue: true, dataLabelPosition: "outEnd", dataLabelColor: "1C1C20",
-  dataLabelFontSize: 13, dataLabelFontFace: "+mn-lt",
-  catAxisLabelColor: "1C1C20", catAxisLabelFontSize: 12, catAxisLabelFontFace: "+mn-lt",
-  valAxisLabelColor: "6B7280", valAxisLabelFontSize: 11, valAxisLabelFontFace: "+mn-lt",
-  valAxisMaxVal: 30, valGridLine: { color: "D9DDE3", size: 1 }, catGridLine: { style: "none" },
-  showTitle: false, objectName: "результаты аудита",
-});
-statCard(s, { x: M + 7.6, y: 2.2, w: W - M - (M + 7.6), h: 1.65, value: "4 из 30",
-  label: "карточек содержат все обязательные сведения", color: THEME.colors.accent1, valueSize: 32,
-  name: "итог аудита" });
-s.addShape(pres.ShapeType.roundRect, { x: M + 7.6, y: 4.05, w: W - M - (M + 7.6), h: 1.75, rectRadius: 0.08,
-  fill: { color: C.background1 }, line: { color: THEME.colors.accent6, width: 1 }, objectName: "как считал" });
-s.addText("Как считал", { x: M + 7.85, y: 4.25, w: 3.5, h: 0.3, isTextBox: true, margin: 0,
-  fontSize: 15, bold: true, color: C.text2 });
-s.addText("Брал карточки подряд из выдачи, без отбора. Проверял своим сервисом, затем 5 этикеток сверил вручную.",
-  { x: M + 7.85, y: 4.6, w: W - M - (M + 7.85) - 0.25, h: 1.1, isTextBox: true, margin: 0,
-    fontSize: 13, color: C.text1 });
-s.addNotes("ПОДСТАВИТЬ СВОИ ЦИФРЫ перед защитой: числа на графике и в карточке — из моего аудита 30 карточек, замените на собственные. Подчеркнуть: карточки брал подряд, без отбора, иначе результат нечестный.");
-
-/* ---------- 4. Решение ---------- */
+/* ---------- 3. Решение ---------- */
 pres.addSection({ title: "Решение" });
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Решение" });
 s.addText("Как работает «Бирка»", { placeholder: "title" });
@@ -206,7 +174,7 @@ s.addText("Ориентировочный риск: 100–300 тыс. ₽ (ч. 1
     fontSize: 12, bold: true, color: THEME.colors.accent1 });
 s.addNotes("Здесь переходим к живой демонстрации: попросить у жюри любой товар в упаковке и проверить его. Если сеть подведёт — показать заранее сохранённые скриншоты.");
 
-/* ---------- 5. Демонстрация ---------- */
+/* ---------- 4. Демонстрация ---------- */
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Решение" });
 s.addText("Проверим прямо сейчас", { placeholder: "title" });
 s.addText("Дайте любой товар в упаковке — через минуту вы увидите, чего не хватает на его этикетке",
@@ -222,7 +190,7 @@ s.addText("Работает в браузере телефона. Ничего �
     valign: "top" });
 s.addNotes("Сайт открыть ЗАРАНЕЕ и не закрывать вкладку. Держать под рукой скриншоты отчётов и текст этикетки в заметках телефона — на случай сбоя сети.\n\nОТВЕТЫ НА ВОПРОСЫ ПОСЛЕ ДЕМОНСТРАЦИИ (говорить, если спросят):\n• Проверка предварительная, она не заменяет декларирование соответствия.\n• Высоту шрифта по фотографии не измеряем — приложение задаёт вопрос пользователю.\n• Точность: сверил 5 этикеток вручную, совпадение 94,5 процента. Хуже всего распознаётся дата, выбитая на упаковке, а не напечатанная. Поэтому есть ручной ввод текста.\n• Выделение аллергенов полужирным — рекомендация для читаемости, а не требование регламента.\n• Если фото нечитаемое, сервис честно говорит об этом и предлагает ввести текст вручную.");
 
-/* ---------- 6. Конкуренты ---------- */
+/* ---------- 5. Конкуренты ---------- */
 pres.addSection({ title: "Рынок" });
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Рынок" });
 s.addText("Текст этикетки не проверяет никто", { placeholder: "title" });
@@ -246,7 +214,7 @@ s.addText("Все существующие сервисы работают с к
   { x: M, y: 5.5, w: W - 2 * M, h: 0.7, isTextBox: true, margin: 0, fontSize: 15, color: C.text2, bold: true });
 s.addNotes("Это обязательный слайд: жюри оценивает сравнение с аналогами отдельным критерием. Главная мысль — ниша свободна именно по проверке текста, а не кодов.");
 
-/* ---------- 7. Планы ---------- */
+/* ---------- 6. Планы ---------- */
 pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Итог" });
 s.addText("Что дальше", { placeholder: "title" });
