@@ -108,9 +108,13 @@ s.addText("до 1 млн ₽", { x: W - M - 2.75, y: 2.85, w: 2.6, h: 0.65, isTe
   fontSize: 28, bold: true, color: "FFFFFF", align: "center", valign: "middle" });
 s.addText("штраф за нарушение\nмаркировки", { x: W - M - 2.75, y: 3.5, w: 2.6, h: 0.8, isTextBox: true,
   margin: 0, fontSize: 13, color: "F3C6C6", align: "center", valign: "top" });
+s.addText("Фазуллин Амир", { x: M, y: H - 1.75, w: W - 2 * M, h: 0.4, isTextBox: true, margin: 0,
+  fontSize: 19, bold: true, color: "FFFFFF" });
+s.addText("Лицей-интернат имени Мустафы Онджеля", { x: M, y: H - 1.35, w: W - 2 * M, h: 0.35,
+  isTextBox: true, margin: 0, fontSize: 15, color: "D9DDE3" });
 s.addText("Школьный конкурс по технологическому предпринимательству · ИТ-парк Татарстана",
-  { x: M, y: H - 1.1, w: W - 2 * M, h: 0.4, isTextBox: true, margin: 0, fontSize: 13, color: "AEB6C9" });
-s.addNotes("Представиться. Назвать проект одной фразой: сервис проверяет этикетку товара на соответствие техническому регламенту и сразу показывает, чем грозит нарушение.");
+  { x: M, y: H - 0.95, w: W - 2 * M, h: 0.4, isTextBox: true, margin: 0, fontSize: 13, color: "AEB6C9" });
+s.addNotes("Представиться: имя, лицей-интернат. Назвать проект одной фразой: сервис проверяет этикетку товара на соответствие техническому регламенту и сразу показывает, чем грозит нарушение.");
 
 /* ---------- 2. Проблема ---------- */
 pres.addSection({ title: "Проблема" });
@@ -213,7 +217,7 @@ s.addText("birka.tatnet.app", { x: M, y: 3.4, w: 5.6, h: 1.0, isTextBox: true, m
   fontSize: 24, bold: true, color: "FFFFFF", align: "center", valign: "middle" });
 s.addText("Работает в браузере телефона. Ничего не нужно устанавливать.",
   { x: M, y: 4.6, w: 6.5, h: 0.4, isTextBox: true, margin: 0, fontSize: 14, color: "AEB6C9" });
-s.addNotes("Сайт открыть ЗАРАНЕЕ и не закрывать вкладку. Держать под рукой скриншоты отчётов и текст этикетки в заметках телефона — на случай сбоя сети.");
+s.addNotes("Сайт открыть ЗАРАНЕЕ и не закрывать вкладку. Держать под рукой скриншоты отчётов и текст этикетки в заметках телефона — на случай сбоя сети.\n\nОТВЕТЫ НА ВОПРОСЫ ПОСЛЕ ДЕМОНСТРАЦИИ (говорить, если спросят):\n• Проверка предварительная, она не заменяет декларирование соответствия.\n• Высоту шрифта по фотографии не измеряем — приложение задаёт вопрос пользователю.\n• Точность: сверил 5 этикеток вручную, совпадение 94,5 процента. Хуже всего распознаётся дата, выбитая на упаковке, а не напечатанная. Поэтому есть ручной ввод текста.\n• Выделение аллергенов полужирным — рекомендация для читаемости, а не требование регламента.\n• Если фото нечитаемое, сервис честно говорит об этом и предлагает ввести текст вручную.");
 
 /* ---------- 6. Конкуренты ---------- */
 pres.addSection({ title: "Рынок" });
@@ -239,31 +243,7 @@ s.addText("Все существующие сервисы работают с к
   { x: M, y: 5.5, w: W - 2 * M, h: 0.7, isTextBox: true, margin: 0, fontSize: 15, color: C.text2, bold: true });
 s.addNotes("Это обязательный слайд: жюри оценивает сравнение с аналогами отдельным критерием. Главная мысль — ниша свободна именно по проверке текста, а не кодов.");
 
-/* ---------- 7. Точность и ограничения ---------- */
-pres.addSection({ title: "Честно" });
-s = pres.addSlide({ masterName: "CONTENT_TINT", sectionTitle: "Честно" });
-s.addText("Что сервис не умеет", { placeholder: "title" });
-const limW = (W - 2 * M - 0.4) / 2;
-s.addShape(pres.ShapeType.roundRect, { x: M, y: 1.7, w: limW, h: 1.5, rectRadius: 0.08,
-  fill: { color: C.background1 }, line: { color: THEME.colors.accent6, width: 1 }, objectName: "точность" });
-s.addText([{ text: "94,5%\n", options: { fontSize: 30, bold: true, color: THEME.colors.accent4 } },
-  { text: "совпадение с ручной проверкой на 5 этикетках", options: { fontSize: 13, color: THEME.colors.accent3 } }],
-  { x: M + 0.25, y: 1.9, w: limW - 0.5, h: 1.1, isTextBox: true, margin: 0 });
-s.addShape(pres.ShapeType.roundRect, { x: M + limW + 0.4, y: 1.7, w: limW, h: 1.5, rectRadius: 0.08,
-  fill: { color: C.background1 }, line: { color: THEME.colors.accent6, width: 1 }, objectName: "слабое место" });
-s.addText([{ text: "Дата изготовления\n", options: { fontSize: 18, bold: true, color: C.text2 } },
-  { text: "хуже всего распознаётся, когда выбита на упаковке, а не напечатана", options: { fontSize: 13, color: THEME.colors.accent3 } }],
-  { x: M + limW + 0.65, y: 1.9, w: limW - 0.5, h: 1.1, isTextBox: true, margin: 0 });
-s.addText([
-  { text: "Проверка предварительная и не заменяет декларирование соответствия", options: { bullet: true, breakLine: true } },
-  { text: "Высоту шрифта по фотографии не измеряем — задаём вопрос пользователю", options: { bullet: true, breakLine: true } },
-  { text: "Выделение аллергенов полужирным — рекомендация для читаемости, а не требование регламента", options: { bullet: true, breakLine: true } },
-  { text: "Если фото нечитаемое, сервис честно говорит об этом и предлагает ввести текст вручную", options: { bullet: true } },
-], { x: M, y: 3.5, w: W - 2 * M, h: 2.2, isTextBox: true, margin: 0, fontSize: 15,
-  color: C.text1, paraSpaceAfter: 8 });
-s.addNotes("Ограничения называем сами, до вопроса жюри: названное самим ограничение добавляет баллов, найденное жюри — отнимает. ПОДСТАВИТЬ свою цифру точности.");
-
-/* ---------- 8. Деньги ---------- */
+/* ---------- 7. Деньги ---------- */
 pres.addSection({ title: "Деньги" });
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Деньги" });
 s.addText("Кто платит и сколько", { placeholder: "title" });
@@ -289,7 +269,7 @@ s.addText([
   fontSize: 15, color: C.text1, paraSpaceAfter: 6 });
 s.addNotes("Якорь цены: ручная разработка от 16 100 ₽, то есть проверка в 33 раза дешевле. ПОДСТАВИТЬ результаты своего обзвона. Если обзвона не было — эту строку убрать, не выдумывать.");
 
-/* ---------- 9. Планы ---------- */
+/* ---------- 8. Планы ---------- */
 pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Итог" });
 s.addText("Что дальше", { placeholder: "title" });
@@ -314,6 +294,9 @@ s.addText("birka.tatnet.app", { x: M, y: 5.5, w: 6, h: 0.5, isTextBox: true, mar
   fontSize: 22, bold: true, color: THEME.colors.accent4 });
 s.addText("Спасибо. Готов ответить на вопросы", { x: M, y: 6.05, w: 8, h: 0.4, isTextBox: true, margin: 0,
   fontSize: 15, color: "AEB6C9" });
+s.addText("Фазуллин Амир · Лицей-интернат имени Мустафы Онджеля",
+  { x: W - M - 5.6, y: 6.05, w: 5.6, h: 0.4, isTextBox: true, margin: 0,
+    fontSize: 13, color: "AEB6C9", align: "right" });
 s.addNotes("Закончить на планах и поблагодарить. Держать в голове ответы на три вопроса: ответственность за ложное «всё хорошо», точность распознавания, почему продавец заплатит.");
 
 (async () => {
