@@ -224,25 +224,26 @@ const nexts = [
   ["Проверка по ссылке", "разбор карточки\nмаркетплейса целиком"],
   ["Пилот с типографией", "первые клиенты\nв Казани"],
 ];
+// Каждая карточка — один объект: текст внутри фигуры, иначе PowerPoint сдвигает надписи
 nexts.forEach((n, i) => {
-  const x = M + i * (nW + 0.35);
-  s.addShape(pres.ShapeType.roundRect, { x, y: 2.35, w: nW, h: 1.6, rectRadius: 0.1,
-    fill: { color: "3E4C94" }, objectName: "план " + (i + 1) });
-  s.addText(n[0], { x: x + 0.25, y: 2.55, w: nW - 0.5, h: 0.45, isTextBox: true, margin: 0,
-    fontSize: 16, bold: true, color: "FFFFFF", valign: "top" });
-  s.addText(n[1], { x: x + 0.25, y: 3.02, w: nW - 0.5, h: 0.8, isTextBox: true, margin: 0,
-    fontSize: 13, color: "C6CDE4", valign: "top" });
+  s.addText([
+    { text: n[0], options: { fontSize: 16, bold: true, color: "FFFFFF", breakLine: true } },
+    { text: n[1], options: { fontSize: 13, color: "C6CDE4" } },
+  ], { shape: pres.ShapeType.roundRect, rectRadius: 0.1, fill: { color: "3E4C94" },
+    x: M + i * (nW + 0.35), y: 2.4, w: nW, h: 1.7,
+    align: "left", valign: "middle", margin: [12, 16, 12, 16],
+    objectName: "план " + (i + 1) });
 });
 s.addText("С марта 2027 года проверка карточек на маркетплейсах становится обязательной — предварительная самопроверка нужна продавцу уже сейчас",
-  { x: M, y: 4.25, w: W - 2 * M, h: 0.75, isTextBox: true, margin: 0, fontSize: 15,
+  { x: M, y: 4.4, w: W - 2 * M, h: 0.8, isTextBox: true, margin: 0, fontSize: 15,
     color: "D9DDE3", italic: true, valign: "top" });
-s.addText("birka.tatnet.app", { x: M, y: 5.3, w: 7.0, h: 0.5, isTextBox: true, margin: 0,
-  fontSize: 22, bold: true, color: THEME.colors.accent4, valign: "middle" });
-s.addText("Спасибо. Готов ответить на вопросы", { x: M, y: 5.85, w: 7.0, h: 0.4, isTextBox: true,
-  margin: 0, fontSize: 15, color: "AEB6C9", valign: "middle" });
-s.addText("Фазуллин Амир\nЛицей-интернат имени Мустафы Онджеля",
-  { x: M, y: 6.35, w: 9.0, h: 0.7, isTextBox: true, margin: 0,
-    fontSize: 13, color: "8E97B5", valign: "top" });
+s.addText([
+  { text: "birka.tatnet.app", options: { fontSize: 22, bold: true, color: THEME.colors.accent4, breakLine: true } },
+  { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: "AEB6C9", breakLine: true } },
+  { text: " ", options: { fontSize: 8, breakLine: true } },
+  { text: "Фазуллин Амир · Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "8E97B5" } },
+], { x: M, y: 5.35, w: 10.0, h: 1.6, isTextBox: true, margin: 0, valign: "top",
+  objectName: "подпись" });
 s.addNotes("Закончить на планах и поблагодарить. Держать в голове ответы на три вопроса: ответственность за ложное «всё хорошо», точность распознавания, почему продавец заплатит.");
 
 (async () => {
