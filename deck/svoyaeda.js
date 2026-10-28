@@ -75,16 +75,14 @@ function pill(s, { x, y, w, text, name }) {
 /* ---------- 1. Титул ---------- */
 pres.addSection({ title: "Открытие" });
 let s = pres.addSlide({ masterName: "PAGE", sectionTitle: "Открытие" });
-s.addImage({ path: "/home/user/project/deck/img/sait-telefon.png", x: 8.85, y: 0.2, w: 3.7, h: 6.15,
-  objectName: "сайт на телефоне" });
 logo(s);
 s.addText([
   { text: "Свежее от ", options: { color: INK } },
   { text: "своих", options: { color: GREEN, italic: true } },
-], { x: M, y: 2.2, w: 7.3, h: 1.3, isTextBox: true, margin: 0,
-  fontSize: 50, fontFace: "Cambria", align: "left", valign: "middle", fit: "none" });
-s.addText("Площадка, где видно, кто готовит и выращивает\nна продажу на соседних улицах",
-  { x: M, y: 3.55, w: 7.3, h: 0.9, isTextBox: true, margin: 0, fontSize: 19,
+], { x: M, y: 2.2, w: W - 2 * M, h: 1.3, isTextBox: true, margin: 0,
+  fontSize: 54, fontFace: "Cambria", align: "left", valign: "middle", fit: "none" });
+s.addText("Площадка, где видно, кто готовит и выращивает на продажу\nна соседних улицах. Дальше — одна история, от ведра клубники до заказа.",
+  { x: M, y: 3.55, w: 9.0, h: 0.9, isTextBox: true, margin: 0, fontSize: 19,
     color: MUTED, align: "left", valign: "top" });
 pill(s, { x: M, y: 4.65, w: 1.9, text: "Самовывоз", name: "метка 1" });
 pill(s, { x: M + 2.1, y: 4.65, w: 2.3, text: "Рядом с вами", name: "метка 2" });
@@ -189,8 +187,8 @@ heading(s, [
   { text: "Одно ведро — и ", options: { color: INK } },
   { text: "так же всё остальное", options: { color: GREEN, italic: true } },
 ], 1.75, 38);
-s.addText("С клубникой получилось. Ровно так же продаются выпечка, мёд,\nмолоко и обеды — и в селе, и в городе.",
-  { x: M, y: 2.7, w: 8.1, h: 1.0, isTextBox: true, margin: 0, fontSize: 18,
+s.addText("С клубникой получилось. Ровно так же продаются домашняя выпечка, мёд, молоко и обеды — и в селе, и в городе: везде есть те, кто готовит, и те, кто рад купить рядом с домом.",
+  { x: M, y: 2.7, w: 11.0, h: 0.9, isTextBox: true, margin: 0, fontSize: 18,
     color: MUTED, align: "left", valign: "top" });
 const nW = (W - 2 * M - 2 * 0.35) / 3;
 [["Первые продавцы", "те, кого в районе уже знают"],
@@ -198,8 +196,6 @@ const nW = (W - 2 * M - 2 * 0.35) / 3;
   card(s, { x: M + i * (nW + 0.35), y: 3.8, w: nW, h: 1.35,
     head: n[0], body: n[1], name: "план " + (i + 1), headSize: 15, bodySize: 13 });
 });
-s.addImage({ path: "/home/user/project/deck/img/sait-ekran.png", x: M + 2 * (nW + 0.35), y: 2.7,
-  w: nW, h: 2.45, objectName: "сайт на экране" });
 s.addText([
   { text: "svoya-eda.tatnet.app", options: { fontSize: 22, bold: true, color: GREEN,
     fontFace: "Cambria", breakLine: true } },
