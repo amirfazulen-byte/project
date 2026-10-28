@@ -30,10 +30,6 @@ const W = 13.3, H = 7.5, M = 0.9;
 pres.defineSlideMaster({
   title: "PAGE",
   background: { color: BG },
-  objects: [
-    { text: { text: "svoya-eda.tatnet.app", options: { x: W - M - 4, y: 0.4, w: 4, h: 0.35,
-        fontSize: 12, color: MUTED, align: "right", isTextBox: true, margin: 0, valign: "middle" } } },
-  ],
 });
 
 /* ---------- Помощники ---------- */
