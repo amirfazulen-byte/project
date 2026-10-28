@@ -243,60 +243,35 @@ s.addText("Все существующие сервисы работают с к
   { x: M, y: 5.5, w: W - 2 * M, h: 0.7, isTextBox: true, margin: 0, fontSize: 15, color: C.text2, bold: true });
 s.addNotes("Это обязательный слайд: жюри оценивает сравнение с аналогами отдельным критерием. Главная мысль — ниша свободна именно по проверке текста, а не кодов.");
 
-/* ---------- 7. Деньги ---------- */
-pres.addSection({ title: "Деньги" });
-s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Деньги" });
-s.addText("Кто платит и сколько", { placeholder: "title" });
-const pW = (W - 2 * M - 2 * 0.35) / 3;
-statCard(s, { x: M, y: 1.7, w: pW, h: 1.75, value: "490 ₽", label: "одна проверка с отчётом в PDF",
-  color: THEME.colors.accent2, valueSize: 32, name: "тариф разовый" });
-statCard(s, { x: M + pW + 0.35, y: 1.7, w: pW, h: 1.75, value: "2 900 ₽/мес",
-  label: "до 50 проверок — продавцу с портфелем товаров", color: THEME.colors.accent2, valueSize: 26,
-  name: "тариф продавец" });
-statCard(s, { x: M + 2 * (pW + 0.35), y: 1.7, w: pW, h: 1.75, value: "9 900 ₽/мес",
-  label: "без лимита — типографиям и агентствам", color: THEME.colors.accent1, valueSize: 26,
-  name: "тариф типография" });
-s.addShape(pres.ShapeType.roundRect, { x: M, y: 3.75, w: W - 2 * M, h: 2.05, rectRadius: 0.08,
-  fill: { color: C.background2 }, line: { color: THEME.colors.accent1, width: 1 }, objectName: "главный клиент" });
-s.addText("Главный клиент — типографии и дизайн-студии, а не продавец-одиночка",
-  { x: M + 0.35, y: 3.95, w: W - 2 * M - 0.7, h: 0.4, isTextBox: true, margin: 0,
-    fontSize: 18, bold: true, color: C.text2 });
-s.addText([
-  { text: "У них каждый заказ — новая этикетка: десятки проверок в месяц", options: { bullet: true, breakLine: true } },
-  { text: "За испорченный тираж отвечают они, а не заказчик", options: { bullet: true, breakLine: true } },
-  { text: "Обзвонил 10 типографий Казани: 7 проверяют макеты вручную, 2 готовы протестировать", options: { bullet: true } },
-], { x: M + 0.35, y: 4.45, w: W - 2 * M - 0.7, h: 1.2, isTextBox: true, margin: 0,
-  fontSize: 15, color: C.text1, paraSpaceAfter: 6 });
-s.addNotes("Якорь цены: ручная разработка от 16 100 ₽, то есть проверка в 33 раза дешевле. ПОДСТАВИТЬ результаты своего обзвона. Если обзвона не было — эту строку убрать, не выдумывать.");
-
-/* ---------- 8. Планы ---------- */
+/* ---------- 7. Планы ---------- */
 pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Итог" });
 s.addText("Что дальше", { placeholder: "title" });
 const nW = (W - 2 * M - 2 * 0.35) / 3;
 const nexts = [
-  ["Детские товары", "добавить проверку по ТР ТС 007/2011"],
-  ["Проверка по ссылке", "разбор карточки маркетплейса целиком"],
-  ["Пилот с типографией", "первые платящие клиенты в Казани"],
+  ["Детские товары", "добавить проверку\nпо ТР ТС 007/2011"],
+  ["Проверка по ссылке", "разбор карточки\nмаркетплейса целиком"],
+  ["Пилот с типографией", "первые клиенты\nв Казани"],
 ];
 nexts.forEach((n, i) => {
   const x = M + i * (nW + 0.35);
-  s.addShape(pres.ShapeType.roundRect, { x, y: 2.5, w: nW, h: 1.5, rectRadius: 0.1,
+  s.addShape(pres.ShapeType.roundRect, { x, y: 2.35, w: nW, h: 1.6, rectRadius: 0.1,
     fill: { color: "3E4C94" }, objectName: "план " + (i + 1) });
-  s.addText(n[0], { x: x + 0.25, y: 2.7, w: nW - 0.5, h: 0.4, isTextBox: true, margin: 0,
-    fontSize: 17, bold: true, color: "FFFFFF" });
-  s.addText(n[1], { x: x + 0.25, y: 3.1, w: nW - 0.5, h: 0.75, isTextBox: true, margin: 0,
-    fontSize: 13, color: "C6CDE4" });
+  s.addText(n[0], { x: x + 0.25, y: 2.55, w: nW - 0.5, h: 0.45, isTextBox: true, margin: 0,
+    fontSize: 16, bold: true, color: "FFFFFF", valign: "top" });
+  s.addText(n[1], { x: x + 0.25, y: 3.02, w: nW - 0.5, h: 0.8, isTextBox: true, margin: 0,
+    fontSize: 13, color: "C6CDE4", valign: "top" });
 });
 s.addText("С марта 2027 года проверка карточек на маркетплейсах становится обязательной — предварительная самопроверка нужна продавцу уже сейчас",
-  { x: M, y: 4.3, w: W - 2 * M - 2.0, h: 0.8, isTextBox: true, margin: 0, fontSize: 15, color: "D9DDE3", italic: true });
-s.addText("birka.tatnet.app", { x: M, y: 5.5, w: 6, h: 0.5, isTextBox: true, margin: 0,
-  fontSize: 22, bold: true, color: THEME.colors.accent4 });
-s.addText("Спасибо. Готов ответить на вопросы", { x: M, y: 6.05, w: 8, h: 0.4, isTextBox: true, margin: 0,
-  fontSize: 15, color: "AEB6C9" });
-s.addText("Фазуллин Амир · Лицей-интернат имени Мустафы Онджеля",
-  { x: W - M - 5.6, y: 6.05, w: 5.6, h: 0.4, isTextBox: true, margin: 0,
-    fontSize: 13, color: "AEB6C9", align: "right" });
+  { x: M, y: 4.25, w: W - 2 * M, h: 0.75, isTextBox: true, margin: 0, fontSize: 15,
+    color: "D9DDE3", italic: true, valign: "top" });
+s.addText("birka.tatnet.app", { x: M, y: 5.3, w: 7.0, h: 0.5, isTextBox: true, margin: 0,
+  fontSize: 22, bold: true, color: THEME.colors.accent4, valign: "middle" });
+s.addText("Спасибо. Готов ответить на вопросы", { x: M, y: 5.85, w: 7.0, h: 0.4, isTextBox: true,
+  margin: 0, fontSize: 15, color: "AEB6C9", valign: "middle" });
+s.addText("Фазуллин Амир\nЛицей-интернат имени Мустафы Онджеля",
+  { x: M, y: 6.35, w: 9.0, h: 0.7, isTextBox: true, margin: 0,
+    fontSize: 13, color: "8E97B5", valign: "top" });
 s.addNotes("Закончить на планах и поблагодарить. Держать в голове ответы на три вопроса: ответственность за ложное «всё хорошо», точность распознавания, почему продавец заплатит.");
 
 (async () => {
