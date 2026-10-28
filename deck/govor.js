@@ -92,13 +92,13 @@ s.addText("Не надо быть идеальным — надо быть по�
 s.addText("Тренажёр для школьников, которые боятся отвечать у доски", { x: M, y: 4.25, w: 9.0, h: 0.5,
   isTextBox: true, margin: 0, fontSize: 16, color: "C5DADD", align: "left", valign: "top" });
 s.addText([
-  { text: "Фамилия Имя", options: { fontSize: 19, bold: true, color: "FFFFFF", breakLine: true } },
+  { text: "Батыршин Ильназ", options: { fontSize: 19, bold: true, color: "FFFFFF", breakLine: true } },
   { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 15, color: "C5DADD", breakLine: true } },
   { text: " ", options: { fontSize: 6, breakLine: true } },
   { text: "Школьный конкурс по технологическому предпринимательству · ИТ-парк Татарстана",
     options: { fontSize: 13, color: "8FAEB3" } },
 ], { x: M, y: 5.45, w: 10.0, h: 1.5, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
-s.addNotes("ЗАМЕНИТЬ «Фамилия Имя» на своё. Представиться и назвать проект одной фразой: тренажёр, который помогает школьнику не бояться отвечать у доски.");
+s.addNotes("Представиться и назвать проект одной фразой: тренажёр, который помогает школьнику не бояться отвечать у доски.");
 
 /* ---------- 2. Проблема ---------- */
 pres.addSection({ title: "Проблема" });
@@ -217,9 +217,9 @@ s.addText([
   { text: "govor.tatnet.app", options: { fontSize: 22, bold: true, color: THEME.colors.accent4, breakLine: true } },
   { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: "8FAEB3", breakLine: true } },
   { text: " ", options: { fontSize: 8, breakLine: true } },
-  { text: "Фамилия Имя · Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "6E8E94" } },
+  { text: "Батыршин Ильназ · Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "6E8E94" } },
 ], { x: M, y: 5.35, w: 10.0, h: 1.6, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
-s.addNotes("ЗАМЕНИТЬ «Фамилия Имя». Закончить на планах и поблагодарить.");
+s.addNotes("Закончить на планах и поблагодарить.");
 
 (async () => {
   await pres.writeFile({ fileName: "/home/user/project/deck/Спокойно у доски.pptx" });
