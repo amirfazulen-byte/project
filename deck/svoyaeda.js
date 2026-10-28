@@ -72,7 +72,7 @@ s.addText("СвояЕда", { x: M, y: 1.4, w: 9.5, h: 1.2, isTextBox: true, mar
   fontSize: 52, bold: true, color: "FFFFFF", align: "left", valign: "middle", fit: "none" });
 s.addText("Свежее от своих", { x: M, y: 2.65, w: 9.5, h: 0.6, isTextBox: true, margin: 0,
   fontSize: 22, color: THEME.colors.accent4, align: "left", valign: "top" });
-s.addText("Площадка, где соседи продают друг другу домашнюю еду — всё на одной карте рядом с вами",
+s.addText("Домашние повара, мини-пекарни, огородники и бабушки с картошкой — всё на одной карте рядом с вами",
   { x: M, y: 3.3, w: 9.5, h: 0.6, isTextBox: true, margin: 0, fontSize: 17,
     color: ON_DARK, align: "left", valign: "top" });
 s.addText([
@@ -86,29 +86,30 @@ s.addNotes("Представиться. Назвать проект одной �
 /* ---------- 2. Проблема ---------- */
 pres.addSection({ title: "Проблема" });
 s = pres.addSlide({ masterName: "LIGHT", sectionTitle: "Проблема" });
-title(s, "Урожай есть, покупателя нет");
+title(s, "Рядом, но не находят друг друга");
 s.addText([
-  { text: "Бабушка в Урусу собрала ведро клубники. Через два дня она испортится. ",
-    options: { fontSize: 17, color: C.text1 } },
-  { text: "Ехать на рынок — стоять там полдня. Выложить на Авито — пока найдут и договорятся, ягоды пропадут. А на соседней улице есть человек, который купил бы её сегодня вечером.",
-    options: { fontSize: 17, color: C.text1 } },
-], { x: M, y: 1.45, w: W - 2 * M, h: 1.0, isTextBox: true, margin: 0, valign: "top" });
+  { text: "Бабушка в Урусу собрала ведро клубники. Через два дня она испортится. Ехать на рынок — стоять там полдня. Выложить на Авито — пока найдут и договорятся, ягоды пропадут. А на соседней улице есть человек, который купил бы её сегодня вечером.",
+    options: { fontSize: 16, color: C.text1 } },
+], { x: M, y: 1.4, w: W - 2 * M, h: 0.9, isTextBox: true, margin: 0, valign: "top" });
+s.addText("То же самое у домашнего повара в городе, у мини-пекарни и у любого, кто готовит или выращивает на продажу",
+  { x: M, y: 2.3, w: W - 2 * M, h: 0.4, isTextBox: true, margin: 0, fontSize: 15,
+    italic: true, color: THEME.colors.accent3, valign: "top" });
 const cw = (W - 2 * M - 2 * 0.4) / 3;
-statCard(s, { x: M, y: 2.7, w: cw, h: 1.9, value: "401 000", valueSize: 34,
+statCard(s, { x: M, y: 2.85, w: cw, h: 1.85, value: "401 000", valueSize: 34,
   label: "личных подсобных хозяйств в Татарстане — данные Минсельхоза РТ", name: "лпх" });
-statCard(s, { x: M + cw + 0.4, y: 2.7, w: cw, h: 1.9, value: "142 млрд ₽", valueSize: 28,
+statCard(s, { x: M + cw + 0.4, y: 2.85, w: cw, h: 1.85, value: "142 млрд ₽", valueSize: 28,
   label: "продукции в год от малых хозяйств — 42% всего сельхозпроизводства республики", name: "объём" });
-statCard(s, { x: M + 2 * (cw + 0.4), y: 2.7, w: cw, h: 1.9, value: "2 дня", valueSize: 34,
+statCard(s, { x: M + 2 * (cw + 0.4), y: 2.85, w: cw, h: 1.85, value: "2 дня", valueSize: 34,
   label: "столько живёт свежая ягода — продать нужно сегодня, а не через неделю", name: "срок" });
 s.addText([
   { text: "Суть проблемы", options: { fontSize: 17, bold: true, color: THEME.colors.dk2, breakLine: true } },
   { text: " ", options: { fontSize: 7, breakLine: true } },
-  { text: "Продавец и покупатель живут рядом, но не знают друг о друге. Нет простого места, где сосед увидит, что у соседа есть на продажу прямо сейчас.",
+  { text: "Нет простого места, где видно, что продаётся рядом с тобой прямо сейчас. Рынок далеко, чат тонет, а большие площадки рассчитаны на доставку через всю страну.",
     options: { fontSize: 15, color: C.text1 } },
 ], { shape: pres.ShapeType.roundRect, rectRadius: 0.08, fill: { color: THEME.colors.lt2 },
-  x: M, y: 4.85, w: W - 2 * M, h: 1.4, align: "left", valign: "top", margin: [16, 20, 16, 20],
+  x: M, y: 4.9, w: W - 2 * M, h: 1.3, align: "left", valign: "top", margin: [16, 20, 16, 20],
   objectName: "суть" });
-s.addNotes("Историю про клубнику рассказать своими словами, не читать. Цифры: 401 тысяча ЛПХ и 142,2 млрд рублей — Минсельхоз Татарстана. ДОБАВИТЬ число жителей Урусу, если успеешь узнать.");
+s.addNotes("Историю про клубнику рассказать своими словами, не читать. Сразу подчеркнуть, что это пример: та же задача у домашних поваров и мини-пекарен в городе. Цифры — Минсельхоз Татарстана.");
 
 /* ---------- 3. Решение ---------- */
 pres.addSection({ title: "Решение" });
@@ -167,9 +168,9 @@ pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "DARK", sectionTitle: "Итог" });
 title(s, "Что дальше", true);
 const nW = (W - 2 * M - 2 * 0.35) / 3;
-[["Запуск в Урусу", "десять продавцов, которых знают все"],
- ["Соседние сёла", "та же схема без переделок"],
- ["Уведомления", "«у соседа появилась клубника»"]].forEach((n, i) => {
+[["Первые продавцы", "начать с тех, кого в районе уже знают"],
+ ["Новые районы", "та же схема без переделок"],
+ ["Уведомления", "«рядом появилась клубника»"]].forEach((n, i) => {
   s.addText([
     { text: n[0], options: { fontSize: 16, bold: true, color: "FFFFFF", breakLine: true } },
     { text: " ", options: { fontSize: 6, breakLine: true } },
@@ -178,7 +179,7 @@ const nW = (W - 2 * M - 2 * 0.35) / 3;
     x: M + i * (nW + 0.35), y: 2.3, w: nW, h: 1.4,
     align: "left", valign: "top", margin: [12, 14, 12, 14], objectName: "план " + (i + 1) });
 });
-s.addText("В Татарстане 401 тысяча личных хозяйств — у каждого села та же задача, что у Урусу",
+s.addText("401 тысяча хозяйств в одном Татарстане — и столько же домашних кухонь в городах. Площадка работает одинаково везде",
   { x: M, y: 3.95, w: W - 2 * M, h: 0.5, isTextBox: true, margin: 0, fontSize: 15,
     color: ON_DARK, italic: true, valign: "top" });
 s.addText([
