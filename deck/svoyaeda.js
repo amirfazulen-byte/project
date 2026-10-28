@@ -75,14 +75,16 @@ function pill(s, { x, y, w, text, name }) {
 /* ---------- 1. Титул ---------- */
 pres.addSection({ title: "Открытие" });
 let s = pres.addSlide({ masterName: "PAGE", sectionTitle: "Открытие" });
+s.addImage({ path: "/home/user/project/deck/img/klubnika.jpg", x: 8.5, y: 0, w: 4.8, h: H,
+  sizing: { type: "cover", w: 4.8, h: H }, objectName: "фото клубники" });
 logo(s);
 s.addText([
   { text: "Свежее от ", options: { color: INK } },
   { text: "своих", options: { color: GREEN, italic: true } },
-], { x: M, y: 2.2, w: W - 2 * M, h: 1.3, isTextBox: true, margin: 0,
-  fontSize: 54, fontFace: "Cambria", align: "left", valign: "middle", fit: "none" });
-s.addText("Площадка, где видно, кто готовит и выращивает на продажу\nна соседних улицах. Дальше — одна история, от ведра клубники до заказа.",
-  { x: M, y: 3.55, w: 9.0, h: 0.9, isTextBox: true, margin: 0, fontSize: 19,
+], { x: M, y: 2.2, w: 7.3, h: 1.3, isTextBox: true, margin: 0,
+  fontSize: 50, fontFace: "Cambria", align: "left", valign: "middle", fit: "none" });
+s.addText("Площадка, где видно, кто готовит и выращивает\nна продажу на соседних улицах",
+  { x: M, y: 3.55, w: 7.3, h: 0.9, isTextBox: true, margin: 0, fontSize: 19,
     color: MUTED, align: "left", valign: "top" });
 pill(s, { x: M, y: 4.65, w: 1.9, text: "Самовывоз", name: "метка 1" });
 pill(s, { x: M + 2.1, y: 4.65, w: 2.3, text: "Рядом с вами", name: "метка 2" });
@@ -196,10 +198,12 @@ const nW = (W - 2 * M - 2 * 0.35) / 3;
   card(s, { x: M + i * (nW + 0.35), y: 3.8, w: nW, h: 1.35,
     head: n[0], body: n[1], name: "план " + (i + 1), headSize: 15, bodySize: 13 });
 });
+s.addImage({ path: "/home/user/project/deck/img/hleb.jpg", x: M + 2 * (nW + 0.35), y: 3.8,
+  w: nW, h: 1.35, sizing: { type: "cover", w: nW, h: 1.35 }, objectName: "фото хлеба" });
 s.addText([
   { text: "svoya-eda.tatnet.app", options: { fontSize: 22, bold: true, color: GREEN,
     fontFace: "Cambria", breakLine: true } },
-  { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: MUTED } },
+  { text: "Спасибо за внимание", options: { fontSize: 15, color: MUTED } },
 ], { x: M, y: 5.45, w: 10.0, h: 1.0, isTextBox: true, margin: 0, valign: "top", objectName: "финал" });
 s.addNotes("Замкнуть историю: начали с ведра клубники, закончили тем, что схема повторяется для любого домашнего продавца. Поблагодарить.");
 
