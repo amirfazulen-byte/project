@@ -1,19 +1,23 @@
 const pptxgen = require("pptxgenjs");
 const { applyTheme } = require("/root/.claude/skills/synced/17b89be3-2205-4797-b5d7-966378d908a6_6cb4af85-50c3-47ac-a3a7-cdd3927cb574/pptx/scripts/apply_theme.js");
 
-// Терракотовая гамма — под археологию и древнюю историю
+// Тёмно-зелёная гамма
 const THEME = {
   name: "TatHistory",
   headFontFace: "Cambria",
   bodyFontFace: "Calibri",
   colors: {
-    dk1: "231512", lt1: "FFFFFF",
-    dk2: "4A2420", lt2: "EFF3F1",
-    accent1: "B85042", accent2: "7A4A3F", accent3: "7A736F",
-    accent4: "A7BEAE", accent5: "8C3A2E", accent6: "E0D9D4",
-    hlink: "B85042", folHlink: "7A736F",
+    dk1: "16231A", lt1: "FFFFFF",
+    dk2: "1C3A24", lt2: "EEF3EC",
+    accent1: "2C5F2D", accent2: "24502A", accent3: "6E7B70",
+    accent4: "97BC62", accent5: "1F4621", accent6: "DCE4DA",
+    hlink: "2C5F2D", folHlink: "6E7B70",
   },
 };
+// Цвета текста на тёмно-зелёном фоне
+const ON_DARK = "D3E0D2";   // основной
+const ON_DARK_DIM = "9BB09C"; // приглушённый
+const ON_DARK_FAINT = "7F9480";
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
@@ -68,22 +72,22 @@ function statCard(s, { x, y, w, h, value, label, valueSize = 32, name }) {
 /* ---------- 1. Титул ---------- */
 pres.addSection({ title: "Открытие" });
 let s = pres.addSlide({ masterName: "DARK", sectionTitle: "Открытие" });
-s.addText("Путешествие\nсквозь тысячелетия", { x: M, y: 1.9, w: 9.5, h: 1.8, isTextBox: true, margin: 0,
+s.addText("Путешествие\nсквозь тысячелетия", { x: M, y: 1.1, w: 9.5, h: 1.8, isTextBox: true, margin: 0,
   fontSize: 46, bold: true, color: "FFFFFF", align: "left", valign: "middle", fit: "none" });
 s.addText("Квест по истории Татарстана: от Волжской Булгарии до современности",
-  { x: M, y: 3.85, w: 9.5, h: 0.6, isTextBox: true, margin: 0, fontSize: 20,
+  { x: M, y: 3.05, w: 9.5, h: 0.6, isTextBox: true, margin: 0, fontSize: 20,
     color: THEME.colors.accent4, align: "left", valign: "top" });
 s.addText("Для 5–11 классов · бесплатно · работает в браузере телефона",
-  { x: M, y: 4.45, w: 9.5, h: 0.5, isTextBox: true, margin: 0, fontSize: 16,
-    color: "D8CBC6", align: "left", valign: "top" });
+  { x: M, y: 3.65, w: 9.5, h: 0.5, isTextBox: true, margin: 0, fontSize: 16,
+    color: ON_DARK, align: "left", valign: "top" });
 s.addText([
-  { text: "Фамилия Имя", options: { fontSize: 19, bold: true, color: "FFFFFF", breakLine: true } },
-  { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 15, color: "D8CBC6", breakLine: true } },
+  { text: "Фаустов Радмир", options: { fontSize: 19, bold: true, color: "FFFFFF", breakLine: true } },
+  { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 15, color: ON_DARK, breakLine: true } },
   { text: " ", options: { fontSize: 6, breakLine: true } },
   { text: "Школьный конкурс по технологическому предпринимательству · ИТ-парк Татарстана",
-    options: { fontSize: 13, color: "A89189" } },
-], { x: M, y: 5.45, w: 10.0, h: 1.6, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
-s.addNotes("ЗАМЕНИТЬ «Фамилия Имя». Представиться и назвать проект одной фразой: игра, по которой школьник проходит историю Татарстана от Волжской Булгарии до наших дней.");
+    options: { fontSize: 13, color: ON_DARK_DIM } },
+], { x: M, y: 4.5, w: 10.0, h: 1.6, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
+s.addNotes("Представиться и назвать проект одной фразой: игра, по которой школьник проходит историю Татарстана от Волжской Булгарии до наших дней.");
 
 /* ---------- 2. Проблема ---------- */
 pres.addSection({ title: "Проблема" });
@@ -154,7 +158,7 @@ s.addText([
   { text: "Почему это важно для внедрения", options: { fontSize: 17, bold: true, color: "FFFFFF", breakLine: true } },
   { text: " ", options: { fontSize: 7, breakLine: true } },
   { text: "Решение принимает учитель, а не ученик. Поэтому в сервисе есть готовый кабинет учителя: класс заводится за пару минут, ничего устанавливать и согласовывать не нужно — достаточно открыть ссылку.",
-    options: { fontSize: 15, color: "F0E4E0" } },
+    options: { fontSize: 15, color: "E2EFE0" } },
 ], { shape: pres.ShapeType.roundRect, rectRadius: 0.08, fill: { color: THEME.colors.accent1 },
   x: M, y: 4.2, w: W - 2 * M, h: 1.6, align: "left", valign: "top", margin: [16, 20, 16, 20],
   objectName: "внедрение" });
@@ -171,22 +175,22 @@ const nW = (W - 2 * M - 2 * 0.35) / 3;
   s.addText([
     { text: n[0], options: { fontSize: 16, bold: true, color: "FFFFFF", breakLine: true } },
     { text: " ", options: { fontSize: 6, breakLine: true } },
-    { text: n[1], options: { fontSize: 13, color: "D8CBC6" } },
-  ], { shape: pres.ShapeType.roundRect, rectRadius: 0.1, fill: { color: "6B332C" },
+    { text: n[1], options: { fontSize: 13, color: ON_DARK } },
+  ], { shape: pres.ShapeType.roundRect, rectRadius: 0.1, fill: { color: "2E5A38" },
     x: M + i * (nW + 0.35), y: 2.3, w: nW, h: 1.3,
     align: "left", valign: "top", margin: [12, 14, 12, 14], objectName: "план " + (i + 1) });
 });
 s.addText("Курс по истории края ввели в 32 регионах — сделанное для Татарстана подойдёт и соседям",
-  { x: M, y: 3.95, w: W - 2 * M, h: 0.5, isTextBox: true, margin: 0, fontSize: 15,
-    color: "D8CBC6", italic: true, valign: "top" });
+  { x: M, y: 3.85, w: W - 2 * M, h: 0.5, isTextBox: true, margin: 0, fontSize: 15,
+    color: ON_DARK, italic: true, valign: "top" });
 s.addText([
   { text: "tathistory.tatnet.app", options: { fontSize: 22, bold: true, color: THEME.colors.accent4, breakLine: true } },
-  { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: "A89189", breakLine: true } },
+  { text: "Спасибо. Готов ответить на вопросы", options: { fontSize: 15, color: ON_DARK_DIM, breakLine: true } },
   { text: " ", options: { fontSize: 8, breakLine: true } },
-  { text: "Фамилия Имя", options: { fontSize: 13, color: "8F7870", breakLine: true } },
-  { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: "8F7870" } },
-], { x: M, y: 4.75, w: 10.0, h: 2.2, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
-s.addNotes("ЗАМЕНИТЬ «Фамилия Имя». Закончить на планах и поблагодарить.");
+  { text: "Фаустов Радмир", options: { fontSize: 13, color: ON_DARK_FAINT, breakLine: true } },
+  { text: "Лицей-интернат имени Мустафы Онджеля", options: { fontSize: 13, color: ON_DARK_FAINT } },
+], { x: M, y: 4.55, w: 10.0, h: 1.9, isTextBox: true, margin: 0, valign: "top", objectName: "подпись" });
+s.addNotes("Закончить на планах и поблагодарить.");
 
 (async () => {
   await pres.writeFile({ fileName: "/home/user/project/deck/Путешествие сквозь тысячелетия.pptx" });
