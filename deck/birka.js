@@ -67,7 +67,7 @@ pres.defineSlideMaster({
   background: { color: THEME.colors.dk2 },
   objects: [
     { placeholder: { options: { name: "title", type: "title", x: M, y: 1.1, w: W - 2 * M, h: 1.0,
-      fontSize: 40, bold: true, color: C.background1, align: "left" }, text: " " } },
+      fontSize: 40, bold: true, color: C.background1, align: "left", valign: "middle" }, text: " " } },
   ],
 });
 
@@ -210,13 +210,16 @@ s.addNotes("Здесь переходим к живой демонстрации
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Решение" });
 s.addText("Проверим прямо сейчас", { placeholder: "title" });
 s.addText("Дайте любой товар в упаковке — через минуту вы увидите, чего не хватает на его этикетке",
-  { x: M, y: 2.2, w: W - 2 * M - 3.5, h: 0.9, isTextBox: true, margin: 0, fontSize: 20, color: "D9DDE3" });
-s.addShape(pres.ShapeType.roundRect, { x: M, y: 3.4, w: 5.6, h: 1.0, rectRadius: 0.12,
-  fill: { color: THEME.colors.accent4 }, objectName: "адрес сайта" });
-s.addText("birka.tatnet.app", { x: M, y: 3.4, w: 5.6, h: 1.0, isTextBox: true, margin: 0,
-  fontSize: 24, bold: true, color: "FFFFFF", align: "center", valign: "middle" });
+  { x: M, y: 2.45, w: 9.5, h: 0.9, isTextBox: true, margin: 0, fontSize: 20, color: "D9DDE3",
+    valign: "top" });
+// Кнопка одним объектом: текст внутри фигуры, иначе PowerPoint выравнивает его по-своему
+s.addText("birka.tatnet.app", { shape: pres.ShapeType.roundRect, rectRadius: 0.12,
+  fill: { color: THEME.colors.accent4 }, x: M, y: 3.75, w: 5.6, h: 1.0,
+  fontSize: 24, bold: true, color: "FFFFFF", align: "center", valign: "middle",
+  objectName: "адрес сайта" });
 s.addText("Работает в браузере телефона. Ничего не нужно устанавливать.",
-  { x: M, y: 4.6, w: 6.5, h: 0.4, isTextBox: true, margin: 0, fontSize: 14, color: "AEB6C9" });
+  { x: M, y: 5.0, w: 9.5, h: 0.4, isTextBox: true, margin: 0, fontSize: 14, color: "AEB6C9",
+    valign: "top" });
 s.addNotes("Сайт открыть ЗАРАНЕЕ и не закрывать вкладку. Держать под рукой скриншоты отчётов и текст этикетки в заметках телефона — на случай сбоя сети.\n\nОТВЕТЫ НА ВОПРОСЫ ПОСЛЕ ДЕМОНСТРАЦИИ (говорить, если спросят):\n• Проверка предварительная, она не заменяет декларирование соответствия.\n• Высоту шрифта по фотографии не измеряем — приложение задаёт вопрос пользователю.\n• Точность: сверил 5 этикеток вручную, совпадение 94,5 процента. Хуже всего распознаётся дата, выбитая на упаковке, а не напечатанная. Поэтому есть ручной ввод текста.\n• Выделение аллергенов полужирным — рекомендация для читаемости, а не требование регламента.\n• Если фото нечитаемое, сервис честно говорит об этом и предлагает ввести текст вручную.");
 
 /* ---------- 6. Конкуренты ---------- */
@@ -228,7 +231,7 @@ const rows = [
    { text: "Срок", options: { bold: true } }, { text: "Цена", options: { bold: true } }],
   ["Сертификационный центр", "Текст, даёт официальное заключение", "от 3 дней", "от 16 100 ₽"],
   ["«Честный знак», ГИС МТ", "Только коды маркировки", "сразу", "бесплатно"],
-  ["МойСклад, SelSup, GetMark", "Печать и оформление этикеток", "сразу", "в подписке"],
+  ["МойСклад, SelSup, GetMark", "Печать и оформление этикеток", "сразу", "платно"],
   ["«Аудит карточек» Точки", "Качество карточки для продаж", "сразу", "бесплатно"],
   ["Nord Clan", "Машинное зрение на производственной линии", "—", "корпоративно"],
   [{ text: "«Бирка»", options: { bold: true, color: THEME.colors.accent1 } },
