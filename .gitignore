@@ -1,3 +1,7 @@
 __pycache__/
 instance/
 .venv/
+deck/node_modules/
+deck/package-lock.json
+deck/*.pdf
+deck/slide-*.jpg
