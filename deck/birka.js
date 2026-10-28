@@ -176,7 +176,8 @@ s.addNotes("Здесь переходим к живой демонстрации
 
 /* ---------- 4. Демонстрация ---------- */
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Решение" });
-s.addText("Проверим прямо сейчас", { placeholder: "title" });
+s.addText("Проверим прямо сейчас", { x: M, y: 1.0, w: W - 2 * M, h: 1.0, isTextBox: true, margin: 0,
+  fontSize: 40, bold: true, color: "FFFFFF", align: "left", valign: "middle", fit: "none" });
 s.addText("Дайте любой товар в упаковке — через минуту вы увидите, чего не хватает на его этикетке",
   { x: M, y: 2.45, w: 9.5, h: 0.9, isTextBox: true, margin: 0, fontSize: 20, color: "D9DDE3",
     valign: "top" });
@@ -217,7 +218,8 @@ s.addNotes("Это обязательный слайд: жюри оценива�
 /* ---------- 6. Планы ---------- */
 pres.addSection({ title: "Итог" });
 s = pres.addSlide({ masterName: "CLOSING", sectionTitle: "Итог" });
-s.addText("Что дальше", { placeholder: "title" });
+s.addText("Что дальше", { x: M, y: 1.0, w: W - 2 * M, h: 1.0, isTextBox: true, margin: 0,
+  fontSize: 40, bold: true, color: "FFFFFF", align: "left", valign: "middle", fit: "none" });
 const nW = (W - 2 * M - 2 * 0.35) / 3;
 const nexts = [
   ["Детские товары", "добавить проверку\nпо ТР ТС 007/2011"],
